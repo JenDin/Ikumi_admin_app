@@ -36,6 +36,7 @@
       <p class="text-sm uppercase font-bold md:hidden">Edit</p>
       <Button
         class="text-sm px-3 py-1 mt-3 text-center inline-flex items-center mb-1.5"
+        btnText="Edit"
       />
     </td>
     <!-- Delete Button -->
@@ -43,6 +44,7 @@
       <p class="text-sm uppercase font-bold md:hidden">Delete</p>
       <Button
         class="text-sm px-3 py-1 mt-3 text-center inline-flex items-center mb-1.5"
+        btnText="Delete"
       />
     </td>
   </tr>
@@ -50,8 +52,12 @@
 
 <!-- JavaScript code -->
 <script>
+import Button from "../components/Button.vue";
 export default {
   name: "DishMenu",
+  components: {
+    Button,
+  },
   props: {
     dish: Object,
   },
