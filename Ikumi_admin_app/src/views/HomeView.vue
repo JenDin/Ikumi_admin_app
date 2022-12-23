@@ -4,7 +4,7 @@
   <h1
     class="text-[1.6rem] md:text-4xl text-center uppercase font-extrabold mt-8 mb-10"
   >
-    Ikumi administration
+    Administration
   </h1>
 
   <div class="flex flex-wrap justify-center max-w-[1000px] m-auto mb-24">
@@ -41,7 +41,7 @@
             <h5 class="font-bold uppercase text-gray-700">Growth</h5>
             <h3 class="font-bold text-2xl md:text-3xl">
               27%
-              <span class="text-[#52796f]"
+              <span class="text-[#0077b6]"
                 ><i class="fas fa-caret-up"></i
               ></span>
             </h3>
