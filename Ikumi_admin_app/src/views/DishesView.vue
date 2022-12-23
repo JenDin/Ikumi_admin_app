@@ -46,7 +46,12 @@
             </thead>
             <tbody class="flex-1 text-gray-700 sm:flex-none">
               <!-- Create an instance of the InventoryData component and loop through each product -->
-              <DishMenu v-for="dish in dishes" :dish="dish" :key="dish.id" />
+              <DishMenu
+                v-for="dish in dishes"
+                :dish="dish"
+                :key="dish._id"
+                @deleteDish="deleteDish(dish._id)"
+              />
             </tbody>
           </table>
         </div>
@@ -79,6 +84,20 @@ export default {
       const data = await resp.json();
 
       this.dishes = data;
+    },
+    async deleteDish(id) {
+      console.log(id);
+      const resp = await fetch("http://localhost:3000/api/dishes/" + id, {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      });
+
+      const data = await resp.json();
+
+      this.getDishes();
     },
   },
   mounted() {
