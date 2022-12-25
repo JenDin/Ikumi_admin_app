@@ -8,7 +8,7 @@
   </h1>
 
   <!-- Text content above the product table -->
-  <div class="text-gray-700 p-8 mb-24">
+  <div class="text-gray-700 p-8 mb-10">
     <div class="container space-y-8 text-sm mx-auto">
       <div class="space-y-2">
         <!-- Product Table -->
@@ -58,6 +58,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Dish Form -->
+  <section class="mb-24">
+    <h2 class="text-center text-2xl font-bold">Add a dish</h2>
+    <DishForm @dishAdded="getDishes()" />
+  </section>
   <Footer />
 </template>
 
@@ -66,11 +72,13 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import DishMenu from "../components/DishMenu.vue";
+import DishForm from "../components/DishForm.vue";
 export default {
   components: {
     Header,
     Footer,
     DishMenu,
+    DishForm,
   },
   data() {
     return {
