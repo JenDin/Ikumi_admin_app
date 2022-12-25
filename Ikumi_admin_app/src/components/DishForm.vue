@@ -93,6 +93,7 @@
             v-if="updateBtn"
             class="flex justify-center items-center w-full px-4 py-3 mt-0"
             btnText="Update dish"
+            @click.prevent="updateDish()"
           />
         </div>
       </div>
@@ -123,7 +124,21 @@ export default {
       updateBtn: false,
     };
   },
-  emits: ["dishAdded"],
+  emits: ["dishAdded", "dishUpdated"],
+  props: {
+    dish: Object,
+  },
+  watch: {
+    dish() {
+      this.name = this.dish.title;
+      this.category = this.dish.category;
+      this.description = this.dish.description;
+      this.price = this.dish.price;
+
+      this.addBtn = false;
+      this.updateBtn = true;
+    },
+  },
   computed: {
     nameErrorMsg() {
       if (this.name === "" && this.isSent) {
@@ -186,6 +201,43 @@ export default {
           this.isSent = false;
           this.$emit("dishAdded");
         }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async updateDish() {
+      this.isSent = true;
+
+      const dishBody = {
+        title: this.name,
+        category: this.category,
+        description: this.description,
+        price: this.price,
+      };
+
+      try {
+        const resp = await fetch(
+          "http://localhost:3000/api/dishes/" + this.dish._id,
+          {
+            method: "PUT",
+            headers: {
+              Accept: "application/json",
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(dishBody),
+          }
+        );
+
+        const data = await resp.json();
+
+        this.name = "";
+        this.category = "";
+        this.description = "";
+        this.price = "";
+        this.addBtn = true;
+        this.updateBtn = false;
+        this.isSent = false;
+        this.$emit("dishUpdated");
       } catch (error) {
         console.log(error);
       }

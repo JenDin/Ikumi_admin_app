@@ -37,6 +37,7 @@
       <Button
         class="text-sm px-3 py-1 mt-3 text-center inline-flex items-center mb-1.5"
         btnText="Edit"
+        @click="sendEditData()"
       />
     </td>
     <!-- Delete Button -->
@@ -59,13 +60,16 @@ export default {
   components: {
     Button,
   },
-  emits: ["deleteDish"],
+  emits: ["deleteDish", "sendEditData"],
   props: {
     dish: Object,
   },
   methods: {
     deleteDish() {
       this.$emit("deleteDish");
+    },
+    sendEditData() {
+      this.$emit("sendEditData", { dish: this.dish });
     },
   },
 };

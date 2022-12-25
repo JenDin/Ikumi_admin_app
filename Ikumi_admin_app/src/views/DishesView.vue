@@ -51,6 +51,7 @@
                 :dish="dish"
                 :key="dish._id"
                 @deleteDish="deleteDish(dish._id)"
+                @sendEditData="fillEditForm"
               />
             </tbody>
           </table>
@@ -62,7 +63,11 @@
   <!-- Dish Form -->
   <section class="mb-24">
     <h2 class="text-center text-2xl font-bold">Add a dish</h2>
-    <DishForm @dishAdded="getDishes()" />
+    <DishForm
+      @dishAdded="getDishes()"
+      @dishUpdated="getDishes()"
+      :dish="dish"
+    />
   </section>
   <Footer />
 </template>
@@ -83,6 +88,7 @@ export default {
   data() {
     return {
       dishes: [],
+      dish: null,
     };
   },
   methods: {
@@ -106,6 +112,9 @@ export default {
       const data = await resp.json();
 
       this.getDishes();
+    },
+    fillEditForm({ dish }) {
+      this.dish = dish;
     },
   },
   mounted() {
