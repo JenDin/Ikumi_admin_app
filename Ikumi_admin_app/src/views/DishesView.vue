@@ -100,7 +100,6 @@ export default {
       this.dishes = data;
     },
     async deleteDish(id) {
-      console.log(id);
       const resp = await fetch("http://localhost:3000/api/dishes/" + id, {
         method: "DELETE",
         headers: {

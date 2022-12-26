@@ -7,16 +7,16 @@
       <div class="max-w-md mx-auto">
         <div class="flex items-center space-x-5">
           <div class="block font-semibold text-xl self-start text-gray-700">
-            <!-- Change the text inside the form based on if the user adds or updates a dish -->
-            <h2 class="leading-relaxed" v-if="addBtn">Add a new dish</h2>
-            <h2 class="leading-relaxed" v-if="updateBtn">Update a dish</h2>
+            <!-- Change the text inside the form based on if the user adds or updates a drink -->
+            <h2 class="leading-relaxed" v-if="addBtn">Add a new drink</h2>
+            <h2 class="leading-relaxed" v-if="updateBtn">Update a drink</h2>
           </div>
         </div>
         <div class="divide-y divide-gray-200">
           <div
             class="py-4 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
           >
-            <!-- Dish name label and input -->
+            <!-- Drink name label and input -->
             <div class="flex flex-col">
               <label for="name" class="text-[.9rem] font-medium">Name</label>
               <input
@@ -26,10 +26,10 @@
                 v-model="name"
               />
               <p v-if="nameErrorMsg" class="text-sm text-customRed mt-0.5">
-                * Please enter a dish name
+                * Please enter a drink name
               </p>
             </div>
-            <!-- Dish label and select box -->
+            <!-- Drink label and select box -->
             <div class="flex flex-col">
               <label for="colors" class="text-[.9rem] font-medium"
                 >Category</label
@@ -41,8 +41,8 @@
               >
                 <!-- Make this the default value at the start -->
                 <option disabled value="">Choose a category</option>
-                <option value="Sashimi/Nigiri">Sashimi/Nigiri</option>
-                <option value="Rolls">Rolls</option>
+                <option value="Sake">Sake</option>
+                <option value="Wine">Wine</option>
               </select>
               <p v-if="categoryErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a category
@@ -84,16 +84,16 @@
           <Button
             v-if="addBtn"
             class="flex justify-center items-center w-full px-4 py-3 mt-0"
-            btnText="Add new dish"
-            @click.prevent="addDish()"
+            btnText="Add new drink"
+            @click.prevent="addDrink()"
           />
           <!-- Update button -->
-          <Button
+          <!-- <Button
             v-if="updateBtn"
             class="flex justify-center items-center w-full px-4 py-3 mt-0"
-            btnText="Update dish"
-            @click.prevent="updateDish()"
-          />
+            btnText="Update drink"
+            @click.prevent="updateDrink()"
+          /> -->
         </div>
       </div>
     </div>
@@ -104,10 +104,11 @@
 <script>
 import Button from "../components/Button.vue";
 export default {
-  name: "DishForm",
+  name: "DrinkForm",
   components: {
     Button,
   },
+  emits: ["drinkAdded"],
   data() {
     return {
       name: "",
@@ -118,25 +119,10 @@ export default {
       categoryErrorMsg: false,
       descriptionErrorMsg: false,
       priceErrorMsg: false,
-      isSent: false,
       addBtn: true,
       updateBtn: false,
+      isSent: false,
     };
-  },
-  emits: ["dishAdded", "dishUpdated"],
-  props: {
-    dish: Object,
-  },
-  watch: {
-    dish() {
-      this.name = this.dish.title;
-      this.category = this.dish.category;
-      this.description = this.dish.description;
-      this.price = this.dish.price;
-
-      this.addBtn = false;
-      this.updateBtn = true;
-    },
   },
   computed: {
     nameErrorMsg() {
@@ -165,10 +151,10 @@ export default {
     },
   },
   methods: {
-    async addDish() {
+    async addDrink() {
       this.isSent = true;
 
-      const dishBody = {
+      const drinkBody = {
         title: this.name,
         category: this.category,
         description: this.description,
@@ -182,61 +168,23 @@ export default {
           this.description !== "" &&
           this.price !== ""
         ) {
-          const resp = await fetch("http://localhost:3000/api/dishes", {
+          const resp = await fetch("http://localhost:3000/api/drinks", {
             method: "POST",
             headers: {
               Accept: "application/json",
               "Content-type": "application/json",
             },
-            body: JSON.stringify(dishBody),
+            body: JSON.stringify(drinkBody),
           });
 
           const data = await resp.json();
-
           this.name = "";
           this.category = "";
           this.description = "";
           this.price = "";
           this.isSent = false;
-          this.$emit("dishAdded");
+          this.$emit("drinkAdded");
         }
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async updateDish() {
-      this.isSent = true;
-
-      const dishBody = {
-        title: this.name,
-        category: this.category,
-        description: this.description,
-        price: this.price,
-      };
-
-      try {
-        const resp = await fetch(
-          "http://localhost:3000/api/dishes/" + this.dish._id,
-          {
-            method: "PUT",
-            headers: {
-              Accept: "application/json",
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify(dishBody),
-          }
-        );
-
-        const data = await resp.json();
-
-        this.name = "";
-        this.category = "";
-        this.description = "";
-        this.price = "";
-        this.addBtn = true;
-        this.updateBtn = false;
-        this.isSent = false;
-        this.$emit("dishUpdated");
       } catch (error) {
         console.log(error);
       }

@@ -3,33 +3,33 @@
   <tr
     class="border-t first:border-t-0 flex p-1 md:p-3 hover:bg-gray-100 md:table-row flex-col w-full flex-wrap"
   >
-    <!-- Dish Name -->
+    <!-- Drink Name -->
     <td class="p-1 md:p-2">
       <span class="text-sm text-customBlueGray uppercase font-bold md:hidden"
         >Name</span
       >
-      <p>{{ dish.title }}</p>
+      <p>{{ drink.title }}</p>
     </td>
-    <!-- Dish Category -->
+    <!-- Drink Category -->
     <td class="p-1 md:p-2 md:max-w-[2rem]">
       <span class="text-sm text-customBlueGray uppercase font-bold md:hidden"
         >Category</span
       >
-      <p>{{ dish.category }}</p>
+      <p>{{ drink.category }}</p>
     </td>
-    <!-- Dish Description -->
+    <!-- Drink Description -->
     <td class="p-1 md:p-2">
       <span class="text-sm text-customBlueGray uppercase font-bold md:hidden">
         Description
       </span>
-      <p>{{ dish.description }}</p>
+      <p>{{ drink.description }}</p>
     </td>
-    <!-- Dish Price -->
+    <!-- Drink Price -->
     <td class="p-1 md:p-2">
       <span class="text-sm text-customBlueGray uppercase font-bold md:hidden">
         Price
       </span>
-      <p>{{ dish.price }}</p>
+      <p>{{ drink.price }}</p>
     </td>
     <!-- Edit Button -->
     <td class="p-1 md:p-2">
@@ -46,7 +46,7 @@
       <Button
         class="text-sm px-3 py-1 mt-3 text-center inline-flex items-center mb-1.5"
         btnText="Delete"
-        @click="sendDishData()"
+        @click="sendDrinkData()"
       />
     </td>
   </tr>
@@ -56,22 +56,17 @@
 <script>
 import Button from "../components/Button.vue";
 export default {
-  name: "DishMenu",
+  name: "DrinkMenu",
   components: {
     Button,
   },
-  emits: ["deleteDish", "sendEditData"],
+  emits: ["deleteDrink"],
   props: {
-    dish: Object,
+    drink: Object,
   },
   methods: {
-    sendDishData() {
-      this.$emit("deleteDish");
-    },
-    sendEditData() {
-      this.$emit("sendEditData", { dish: this.dish });
-
-      window.scrollTo(0, document.body.scrollHeight);
+    sendDrinkData() {
+      this.$emit("deleteDrink");
     },
   },
 };
