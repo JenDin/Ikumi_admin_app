@@ -12,7 +12,7 @@
       <!--  Card 1-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-[#15803d]">
+          <div class="rounded p-3 bg-black">
             <i class="fa fa-wallet fa-2x fa-fw fa-inverse"></i>
           </div>
 
@@ -20,9 +20,7 @@
             <h5 class="font-bold uppercase text-gray-500">Total Revenue</h5>
             <h3 class="font-bold text-2xl md:text-3xl">
               ¥4 524 459
-              <span class="text-[#15803d]"
-                ><i class="fas fa-caret-up"></i
-              ></span>
+              <span class="text-black"><i class="fas fa-caret-up"></i></span>
             </h3>
           </div>
         </div>
@@ -33,17 +31,15 @@
       <!-- Card 2-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-[#0077b6]">
-            <i class="fa fa-rocket fa-2x fa-fw fa-inverse text-[#caf0f8]"></i>
+          <div class="rounded p-3 bg-black">
+            <i class="fa fa-rocket fa-2x fa-fw fa-inverse text-white"></i>
           </div>
 
           <div class="flex-1 text-right md:text-center">
             <h5 class="font-bold uppercase text-gray-700">Growth</h5>
             <h3 class="font-bold text-2xl md:text-3xl">
               27%
-              <span class="text-[#0077b6]"
-                ><i class="fas fa-caret-up"></i
-              ></span>
+              <span class="text-black"><i class="fas fa-caret-up"></i></span>
             </h3>
           </div>
         </div>
@@ -54,8 +50,8 @@
       <!-- Card 3-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-[#e1aea2]">
-            <i class="fa fa-user fa-2x fa-fw fa-inverse text-[#c15d5f]"></i>
+          <div class="rounded p-3 bg-black">
+            <i class="fa fa-user fa-2x fa-fw fa-inverse text-white"></i>
           </div>
 
           <div class="flex-1 text-right md:text-center">
@@ -70,8 +66,8 @@
       <!-- Card 4-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-[#ffd60a]">
-            <i class="fa fa-users fa-2x fa-fw fa-inverse text-[#df8f2d]"></i>
+          <div class="rounded p-3 bg-black">
+            <i class="fa fa-users fa-2x fa-fw fa-inverse text-white"></i>
           </div>
           <div class="flex-1 text-right md:text-center">
             <h5 class="font-bold uppercase text-gray-700">
@@ -82,7 +78,7 @@
         </div>
       </div>
     </div>
-    <img class="p-3" src="src/assets/test.jpg" alt="" />
+    <img class="p-3" src="src/assets/graph.jpg" alt="" />
   </div>
   <Footer />
 </template>

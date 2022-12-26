@@ -61,6 +61,7 @@
 
   <!-- Drink Form -->
   <section class="mb-24">
+    <h2 class="text-center font-bold text-[1.7rem]">Drink form</h2>
     <DrinkForm
       @drinkAdded="getDrinks()"
       @drinkUpdated="getDrinks()"
