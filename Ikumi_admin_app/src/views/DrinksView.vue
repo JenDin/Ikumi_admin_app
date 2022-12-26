@@ -7,6 +7,12 @@
     Manage Drinks
   </h1>
 
+  <div class="mb-3 mt-4" v-if="deleteSuccessMsg">
+    <p class="text-center text-lg font-semibold text-green-700">
+      Drink deleted!
+    </p>
+  </div>
+
   <div class="text-gray-700 p-8 mb-10">
     <div class="container space-y-8 text-sm mx-auto">
       <div class="space-y-2">
@@ -89,6 +95,7 @@ export default {
     return {
       drink: null,
       drinks: [],
+      deleteSuccessMsg: false,
     };
   },
   methods: {
@@ -114,6 +121,12 @@ export default {
         });
 
         const data = await resp.json();
+        this.deleteSuccessMsg = true;
+        window.scrollTo(0, 0);
+
+        setTimeout(() => {
+          this.deleteSuccessMsg = false;
+        }, 6000);
 
         this.getDrinks();
       } catch (error) {

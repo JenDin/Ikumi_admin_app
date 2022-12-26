@@ -70,6 +70,8 @@ export default {
     },
     sendEditData() {
       this.$emit("sendEditData", { drink: this.drink });
+
+      window.scrollTo(0, document.body.scrollHeight);
     },
   },
 };

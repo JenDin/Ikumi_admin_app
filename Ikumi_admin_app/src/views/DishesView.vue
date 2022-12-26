@@ -7,6 +7,12 @@
     Manage Dishes
   </h1>
 
+  <div class="mb-3 mt-4" v-if="deleteSuccessMsg">
+    <p class="text-center text-lg font-semibold text-green-700">
+      Dish deleted!
+    </p>
+  </div>
+
   <!-- Text content above the product table -->
   <div class="text-gray-700 p-8 mb-10">
     <div class="container space-y-8 text-sm mx-auto">
@@ -89,6 +95,7 @@ export default {
     return {
       dishes: [],
       dish: null,
+      deleteSuccessMsg: false,
     };
   },
   methods: {
@@ -111,6 +118,12 @@ export default {
       const data = await resp.json();
 
       this.getDishes();
+      this.deleteSuccessMsg = true;
+      window.scrollTo(0, 0);
+
+      setTimeout(() => {
+        this.deleteSuccessMsg = false;
+      }, 6000);
     },
     fillEditForm({ dish }) {
       this.dish = dish;

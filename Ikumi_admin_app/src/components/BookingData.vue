@@ -77,6 +77,8 @@ export default {
     },
     sendEditData() {
       this.$emit("updateBooking", { booking: this.booking });
+
+      window.scrollTo(0, document.body.scrollHeight);
     },
   },
 };
