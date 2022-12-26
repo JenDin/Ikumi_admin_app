@@ -1,5 +1,18 @@
 <!-- HTML code -->
 <template>
+  <!-- Display a suitable message after a form submit -->
+  <div class="mb-3 mt-4" v-if="postSuccessMsg">
+    <p class="text-center font-semibold text-green-700">
+      A new reservation has been added!
+    </p>
+  </div>
+
+  <div class="mb-3 mt-4" v-if="putSuccessMsg">
+    <p class="text-center font-semibold text-green-700">
+      Reservation details have been updated!
+    </p>
+  </div>
+
   <form class="relative py-3 sm:max-w-xl sm:mx-auto">
     <div
       class="relative px-4 py-5 bg-white mx-8 md:mx-10 shadow rounded-xl sm:p-10"
@@ -18,7 +31,7 @@
         </div>
         <div class="divide-y divide-gray-200">
           <div
-            class="py-4 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
+            class="py-4 text-base leading-6 space-y-4 text-gray-700 sm:text-md sm:leading-7"
           >
             <!-- Booking first name label and input -->
             <div class="flex flex-col">
@@ -186,6 +199,8 @@ export default {
       guestAmountErrorMsg: false,
       dateErrorMsg: false,
       timeErrorMsg: false,
+      postSuccessMsg: false,
+      putSuccessMsg: false,
       addBtn: true,
       updateBtn: false,
       isSent: false,
@@ -268,7 +283,12 @@ export default {
           this.date = "";
           this.time = "";
           this.isSent = false;
+          this.postSuccessMsg = true;
           this.$emit("bookingAdded");
+
+          setTimeout(() => {
+            this.postSuccessMsg = false;
+          }, 6000);
         }
       } catch (error) {
         console.log(error);
@@ -311,7 +331,12 @@ export default {
         this.isSent = false;
         this.addBtn = true;
         this.updateBtn = false;
+        this.putSuccessMsg = true;
         this.$emit("bookingUpdated");
+
+        setTimeout(() => {
+          this.putSuccessMsg = false;
+        }, 6000);
       } catch (error) {
         console.log("error");
       }
