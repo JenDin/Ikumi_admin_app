@@ -88,12 +88,12 @@
             @click.prevent="addDrink()"
           />
           <!-- Update button -->
-          <!-- <Button
+          <Button
             v-if="updateBtn"
             class="flex justify-center items-center w-full px-4 py-3 mt-0"
             btnText="Update drink"
             @click.prevent="updateDrink()"
-          /> -->
+          />
         </div>
       </div>
     </div>
@@ -109,6 +109,19 @@ export default {
     Button,
   },
   emits: ["drinkAdded"],
+  props: {
+    drink: Object,
+  },
+  watch: {
+    drink() {
+      this.name = this.drink.title;
+      this.category = this.drink.category;
+      this.description = this.drink.description;
+      this.price = this.drink.price;
+      this.addBtn = false;
+      this.updateBtn = true;
+    },
+  },
   data() {
     return {
       name: "",
@@ -185,6 +198,41 @@ export default {
           this.isSent = false;
           this.$emit("drinkAdded");
         }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async updateDrink() {
+      this.isSent = true;
+
+      const drinkBody = {
+        title: this.name,
+        category: this.category,
+        description: this.description,
+        price: this.price,
+      };
+
+      try {
+        const resp = await fetch(
+          "http://localhost:3000/api/drinks/" + this.drink._id,
+          {
+            method: "PUT",
+            headers: {
+              Accept: "application/json",
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(drinkBody),
+          }
+        );
+        const data = await resp.json();
+        this.name = "";
+        this.category = "";
+        this.description = "";
+        this.price = "";
+        this.isSent = false;
+        this.addBtn = true;
+        this.updateBtn = false;
+        this.$emit("drinkUpdated");
       } catch (error) {
         console.log(error);
       }

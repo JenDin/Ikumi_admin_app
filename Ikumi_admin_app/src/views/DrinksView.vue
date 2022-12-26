@@ -50,6 +50,7 @@
                 :drink="drink"
                 :key="drink._id"
                 @deleteDrink="deleteDrink(drink._id)"
+                @sendEditData="fillEditForm"
               />
             </tbody>
           </table>
@@ -61,7 +62,11 @@
   <!-- Drink Form -->
   <section class="mb-24">
     <h2 class="text-center text-2xl font-bold">Add a drink</h2>
-    <DrinkForm @drinkAdded="getDrinks()" />
+    <DrinkForm
+      @drinkAdded="getDrinks()"
+      @drinkUpdated="getDrinks()"
+      :drink="drink"
+    />
   </section>
 
   <Footer />
@@ -82,6 +87,7 @@ export default {
   },
   data() {
     return {
+      drink: null,
       drinks: [],
     };
   },
@@ -113,6 +119,9 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    fillEditForm({ drink }) {
+      this.drink = drink;
     },
   },
   mounted() {

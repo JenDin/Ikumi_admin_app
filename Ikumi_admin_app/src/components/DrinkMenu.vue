@@ -60,13 +60,16 @@ export default {
   components: {
     Button,
   },
-  emits: ["deleteDrink"],
+  emits: ["deleteDrink", "sendEditData"],
   props: {
     drink: Object,
   },
   methods: {
     sendDrinkData() {
       this.$emit("deleteDrink");
+    },
+    sendEditData() {
+      this.$emit("sendEditData", { drink: this.drink });
     },
   },
 };
