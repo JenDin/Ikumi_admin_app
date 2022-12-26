@@ -29,7 +29,7 @@
       <span class="text-sm text-customBlueGray uppercase font-bold md:hidden">
         Price
       </span>
-      <p>{{ drink.price }}</p>
+      <p>¥{{ drink.price }}</p>
     </td>
     <!-- Edit Button -->
     <td class="p-1 md:p-2">
