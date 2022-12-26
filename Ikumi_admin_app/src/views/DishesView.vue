@@ -62,7 +62,6 @@
 
   <!-- Dish Form -->
   <section class="mb-24">
-    <h2 class="text-center text-2xl font-bold">Add a dish</h2>
     <DishForm
       @dishAdded="getDishes()"
       @dishUpdated="getDishes()"

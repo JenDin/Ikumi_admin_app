@@ -8,8 +8,12 @@
         <div class="flex items-center space-x-5">
           <div class="block font-semibold text-xl self-start text-gray-700">
             <!-- Change the text inside the form based on if the user adds or updates a drink -->
-            <h2 class="leading-relaxed" v-if="addBtn">Add a new drink</h2>
-            <h2 class="leading-relaxed" v-if="updateBtn">Update a drink</h2>
+            <h2 class="leading-relaxed font-bold" v-if="addBtn">
+              Add a new drink
+            </h2>
+            <h2 class="leading-relaxed font-bold" v-if="updateBtn">
+              Update drink
+            </h2>
           </div>
         </div>
         <div class="divide-y divide-gray-200">

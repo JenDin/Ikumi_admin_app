@@ -23,10 +23,9 @@
         <li class="my-3 uppercase hover:underline">
           <RouterLink to="/drinks">Drinks</RouterLink>
         </li>
-        <!-- 
         <li class="my-3 uppercase hover:underline">
           <RouterLink to="/bookings">Bookings</RouterLink>
-        </li> -->
+        </li>
       </ul>
 
       <!-- Hamburger menu -->
