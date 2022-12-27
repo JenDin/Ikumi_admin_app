@@ -27,21 +27,25 @@
               <tr class="hidden md:table-row">
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByName()"
                 >
                   Name
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByCategory()"
                 >
                   Category
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByDescription()"
                 >
                   Description
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByPrice()"
                 >
                   Price
                 </th>
@@ -135,6 +139,54 @@ export default {
     },
     fillEditForm({ drink }) {
       this.drink = drink;
+    },
+    sortByName() {
+      this.drinks.sort((a, b) => {
+        const drinkName1 = a.title.toUpperCase();
+        const drinkName2 = b.title.toUpperCase();
+
+        if (drinkName1 < drinkName2) {
+          return -1;
+        } else if (drinkName1 > drinkName2) {
+          return 1;
+        }
+        // Names are eqal
+        return 0;
+      });
+    },
+    sortByCategory() {
+      this.drinks.sort((a, b) => {
+        const drinkCategory1 = a.category.toUpperCase();
+        const drinkCategory2 = b.category.toUpperCase();
+
+        if (drinkCategory1 < drinkCategory2) {
+          return -1;
+        } else if (drinkCategory1 > drinkCategory2) {
+          return 1;
+        }
+
+        // Categories are equal
+        return 0;
+      });
+    },
+    sortByDescription() {
+      this.drinks.sort((a, b) => {
+        const drinkDescription1 = a.description.toUpperCase();
+        const drinkDescription2 = b.description.toUpperCase();
+
+        if (drinkDescription1 < drinkDescription2) {
+          return -1;
+        } else if (drinkDescription1 > drinkDescription2) {
+          return 1;
+        }
+        // Descriptions are equal
+        return 0;
+      });
+    },
+    sortByPrice() {
+      this.drinks.sort((a, b) => {
+        return a.price - b.price;
+      });
     },
   },
   mounted() {

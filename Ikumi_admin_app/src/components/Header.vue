@@ -6,7 +6,8 @@
     >
       <div href="#">
         <RouterLink to="/" class="text-2xl uppercase text-white">
-          <h1 class="text-white">Ikumi</h1>
+          <!-- <h1 class="text-white">Ikumi</h1> -->
+          <img src="src/assets/logo.png" alt="" class="w-28" />
         </RouterLink>
       </div>
       <!-- Nav links -->

@@ -28,21 +28,25 @@
               <tr class="hidden md:table-row">
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByName()"
                 >
                   Name
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByCategory()"
                 >
                   Category
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByDescription()"
                 >
                   Description
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByPrice()"
                 >
                   Price
                 </th>
@@ -127,6 +131,54 @@ export default {
     },
     fillEditForm({ dish }) {
       this.dish = dish;
+    },
+    sortByName() {
+      this.dishes.sort((a, b) => {
+        const dishName1 = a.title.toUpperCase();
+        const dishName2 = b.title.toUpperCase();
+
+        if (dishName1 < dishName2) {
+          return -1;
+        } else if (dishName1 > dishName2) {
+          return 1;
+        }
+
+        // The titles are equal
+        return 0;
+      });
+    },
+    sortByCategory() {
+      this.dishes.sort((a, b) => {
+        const dishCategory1 = a.category.toUpperCase();
+        const dishCategory2 = b.category.toUpperCase();
+
+        if (dishCategory1 < dishCategory2) {
+          return -1;
+        } else if (dishCategory1 > dishCategory2) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByDescription() {
+      this.dishes.sort((a, b) => {
+        const dishDescription1 = a.description.toUpperCase();
+        const dishDescription2 = b.description.toUpperCase();
+
+        if (dishDescription1 < dishDescription2) {
+          return -1;
+        } else if (dishDescription1 > dishDescription2) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByPrice() {
+      this.dishes.sort((a, b) => {
+        return a.price - b.price;
+      });
     },
   },
   mounted() {

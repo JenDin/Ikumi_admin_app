@@ -28,26 +28,31 @@
               <tr class="hidden md:table-row">
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByName()"
                 >
                   Name
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByEmail()"
                 >
                   Email
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByGuestAmount()"
                 >
                   Guests
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByDate()"
                 >
                   Date
                 </th>
                 <th
                   class="text-left p-2 hover:bg-gray-400 hover:cursor-pointer"
+                  @click="sortByTime()"
                 >
                   Time
                 </th>
@@ -130,7 +135,7 @@ export default {
 
         this.getBookings();
         this.deleteSuccessMsg = true;
-		window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
 
         setTimeout(() => {
           this.deleteSuccessMsg = false;
@@ -141,6 +146,77 @@ export default {
     },
     fillEditForm({ booking }) {
       this.booking = booking;
+    },
+    sortByName() {
+      this.bookings.sort((a, b) => {
+        const bookingName1 = a.firstName.toUpperCase();
+        const bookingName2 = b.firstName.toUpperCase();
+
+        if (bookingName1 < bookingName2) {
+          return -1;
+        } else if (bookingName1 > bookingName2) {
+          return 1;
+        }
+
+        // Names are equal
+        return 0;
+      });
+    },
+    sortByEmail() {
+      this.bookings.sort((a, b) => {
+        const bookingEmail1 = a.email.toUpperCase();
+        const bookingEmail2 = b.email.toUpperCase();
+
+        if (bookingEmail1 < bookingEmail2) {
+          return -1;
+        } else if (bookingEmail1 > bookingEmail2) {
+          return 1;
+        }
+        // Emails are equal
+        return 0;
+      });
+    },
+    sortByGuestAmount() {
+      this.bookings.sort((a, b) => {
+        const bookingGuestAmount1 = a.guestAmount.toUpperCase();
+        const bookingGuestAmount2 = b.guestAmount.toUpperCase();
+
+        if (bookingGuestAmount1 < bookingGuestAmount2) {
+          return -1;
+        } else if (bookingGuestAmount1 > bookingGuestAmount2) {
+          return 1;
+        }
+        // Guest amounts are equal
+        return 0;
+      });
+    },
+    sortByDate() {
+      this.bookings.sort((a, b) => {
+        const bookingDate1 = a.date.toUpperCase();
+        const bookingDate2 = b.date.toUpperCase();
+
+        if (bookingDate1 < bookingDate2) {
+          return -1;
+        } else if (bookingDate1 > bookingDate2) {
+          return 1;
+        }
+        // Dates are equal
+        return 0;
+      });
+    },
+    sortByTime() {
+      this.bookings.sort((a, b) => {
+        const bookingTime1 = a.time.toUpperCase();
+        const bookingTime2 = b.time.toUpperCase();
+
+        if (bookingTime1 < bookingTime2) {
+          return -1;
+        } else if (bookingTime1 > bookingTime2) {
+          return 1;
+        }
+        // Times are equal
+        return 0;
+      });
     },
   },
   mounted() {

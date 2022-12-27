@@ -12,7 +12,7 @@
       <!--  Card 1-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-black">
+          <div class="rounded p-3 bg-customBlue">
             <i class="fa fa-wallet fa-2x fa-fw fa-inverse"></i>
           </div>
 
@@ -31,7 +31,7 @@
       <!-- Card 2-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-black">
+          <div class="rounded p-3 bg-customBlue">
             <i class="fa fa-rocket fa-2x fa-fw fa-inverse text-white"></i>
           </div>
 
@@ -50,7 +50,7 @@
       <!-- Card 3-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-black">
+          <div class="rounded p-3 bg-customBlue">
             <i class="fa fa-user fa-2x fa-fw fa-inverse text-white"></i>
           </div>
 
@@ -66,7 +66,7 @@
       <!-- Card 4-->
       <div class="bg-white border rounded shadow p-2">
         <div class="flex flex-row items-center">
-          <div class="rounded p-3 bg-black">
+          <div class="rounded p-3 bg-customBlue">
             <i class="fa fa-users fa-2x fa-fw fa-inverse text-white"></i>
           </div>
           <div class="flex-1 text-right md:text-center">
