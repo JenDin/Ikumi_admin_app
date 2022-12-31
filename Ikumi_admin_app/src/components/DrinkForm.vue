@@ -1,5 +1,19 @@
 <!-- HTML code -->
 <template>
+  <!-- Display a suitable message after a form submit -->
+  <div class="mb-3 mt-4" v-if="postSuccessMsg">
+    <p class="text-center font-semibold text-green-700">
+      A new drink has been added!
+    </p>
+  </div>
+
+  <div class="mb-3 mt-4" v-if="putSuccessMsg">
+    <p class="text-center font-semibold text-green-700">
+      Drink details have been updated!
+    </p>
+  </div>
+
+  <!-- Drink form -->
   <form class="relative py-3 sm:max-w-xl sm:mx-auto">
     <div
       class="relative px-4 py-5 bg-white mx-8 md:mx-10 shadow rounded-xl sm:p-10"
@@ -136,6 +150,8 @@ export default {
       categoryErrorMsg: false,
       descriptionErrorMsg: false,
       priceErrorMsg: false,
+      postSuccessMsg: false,
+      putSuccessMsg: false,
       addBtn: true,
       updateBtn: false,
       isSent: false,
@@ -200,7 +216,12 @@ export default {
           this.description = "";
           this.price = "";
           this.isSent = false;
+          this.postSuccessMsg = true;
           this.$emit("drinkAdded");
+
+          setTimeout(() => {
+            this.postSuccessMsg = false;
+          }, 6000);
         }
       } catch (error) {
         console.log(error);
@@ -236,7 +257,12 @@ export default {
         this.isSent = false;
         this.addBtn = true;
         this.updateBtn = false;
+        this.putSuccessMsg = true;
         this.$emit("drinkUpdated");
+
+        setTimeout(() => {
+          this.putSuccessMsg = false;
+        }, 6000);
       } catch (error) {
         console.log(error);
       }

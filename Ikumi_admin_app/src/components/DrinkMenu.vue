@@ -71,6 +71,7 @@ export default {
     sendEditData() {
       this.$emit("sendEditData", { drink: this.drink });
 
+      // Scroll to the bottom of the page where the form is
       window.scrollTo(0, document.body.scrollHeight);
     },
   },

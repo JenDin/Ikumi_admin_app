@@ -13,6 +13,7 @@
     </p>
   </div>
 
+  <!-- Booking form -->
   <form class="relative py-3 sm:max-w-xl sm:mx-auto">
     <div
       class="relative px-4 py-5 bg-white mx-8 md:mx-10 shadow rounded-xl sm:p-10"
@@ -44,6 +45,7 @@
                 class="px-1 py-1.5 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                 v-model="firstName"
               />
+              <!-- First name error message -->
               <p v-if="firstNameErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a first name
               </p>
@@ -59,6 +61,7 @@
                 class="px-1 py-1.5 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                 v-model="lastName"
               />
+              <!-- Last name error message -->
               <p v-if="lastNameErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a last name
               </p>
@@ -72,6 +75,7 @@
                 class="px-1 py-1.5 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                 v-model="email"
               />
+              <!-- Email error message -->
               <p v-if="emailErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter an email
               </p>
@@ -97,6 +101,7 @@
                 <option value="7">7 guests</option>
                 <option value="8">8 guests</option>
               </select>
+              <!-- Guest amount error message -->
               <p
                 v-if="guestAmountErrorMsg"
                 class="text-sm text-customRed mt-0.5"
@@ -113,6 +118,7 @@
                 :min-date="new Date()"
                 :enable-time-picker="false"
               />
+              <!-- Date error message -->
               <p v-if="dateErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a date
               </p>
@@ -136,6 +142,7 @@
                 <option value="20:30">20:30</option>
                 <option value="21:00">21:00</option>
               </select>
+              <!-- Time error message -->
               <p v-if="timeErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a time
               </p>

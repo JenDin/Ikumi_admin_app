@@ -78,6 +78,7 @@ export default {
     sendEditData() {
       this.$emit("updateBooking", { booking: this.booking });
 
+      // Scroll to the bottom of the page where the form is
       window.scrollTo(0, document.body.scrollHeight);
     },
   },

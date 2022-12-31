@@ -13,6 +13,7 @@
     </p>
   </div>
 
+  <!-- Dish form -->
   <form class="relative py-3 sm:max-w-xl sm:mx-auto">
     <div
       class="relative px-4 py-5 bg-white mx-8 md:mx-10 shadow rounded-xl sm:p-10"
@@ -42,6 +43,7 @@
                 class="px-1 py-1.5 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                 v-model="name"
               />
+              <!-- Name error message -->
               <p v-if="nameErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a dish name
               </p>
@@ -61,6 +63,7 @@
                 <option value="Sashimi/Nigiri">Sashimi/Nigiri</option>
                 <option value="Rolls">Rolls</option>
               </select>
+              <!-- Category error message -->
               <p v-if="categoryErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a category
               </p>
@@ -76,6 +79,7 @@
                 class="px-1 py-1.5 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                 v-model="description"
               />
+              <!-- Description error message -->
               <p
                 v-if="descriptionErrorMsg"
                 class="text-sm text-customRed mt-0.5"
@@ -92,6 +96,7 @@
                 class="px-1 py-1.5 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                 v-model="price"
               />
+              <!-- Price error message -->
               <p v-if="priceErrorMsg" class="text-sm text-customRed mt-0.5">
                 * Please enter a price
               </p>
@@ -217,7 +222,12 @@ export default {
           this.description = "";
           this.price = "";
           this.isSent = false;
+          this.postSuccessMsg = true;
           this.$emit("dishAdded");
+
+          setTimeout(() => {
+            this.postSuccessMsg = false;
+          }, 6000);
         }
       } catch (error) {
         console.log(error);
@@ -255,7 +265,12 @@ export default {
         this.addBtn = true;
         this.updateBtn = false;
         this.isSent = false;
+        this.putSuccessMsg = true;
         this.$emit("dishUpdated");
+
+        setTimeout(() => {
+          this.putSuccessMsg = false;
+        }, 6000);
       } catch (error) {
         console.log(error);
       }
